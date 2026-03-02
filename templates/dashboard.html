@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Welcome {{ current_user.name }}</h2>
+
+<h3>Add New Task</h3>
+<form method="POST" action="/add_task">
+    <input type="text" name="title" placeholder="Title" required>
+
+    <select name="priority">
+        <option>High</option>
+        <option>Medium</option>
+        <option>Low</option>
+    </select>
+
+    <input type="number" name="duration" placeholder="Duration (minutes)" required>
+
+    <input type="datetime-local" name="deadline" required>
+
+    <input type="text" name="category" placeholder="Category">
+
+    <button type="submit">Add Task</button>
+</form>
+
+<hr>
+
+<h3>Your Tasks</h3>
+
+{% for task in tasks %}
+<div class="task-card">
+    <b>{{ task.title }}</b><br>
+    Priority: {{ task.priority }}<br>
+    Duration: {{ task.duration }} mins<br>
+    Deadline: {{ task.deadline.strftime('%d %b %Y %I:%M %p') }}<br>
+    Category: {{ task.category }}<br>
+    Status: {{ task.status }}<br><br>
+
+    {% if task.status != "Completed" %}
+        <a href="/complete_task/{{ task.id }}">Mark Complete</a> |
+    {% endif %}
+    <a href="/edit_task/{{ task.id }}">Edit</a> |
+    <a href="/delete_task/{{ task.id }}">Delete</a>
+</div>
+{% endfor %}
+
+<hr>
+
+<h3>Productivity Score: {{ productivity_score }}%</h3>
+
+<hr>
+
+<h3>Time Distribution by Category</h3>
+<canvas id="categoryChart"></canvas>
+
+<script>
+const ctx = document.getElementById('categoryChart').getContext('2d');
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: {{ category_labels | tojson }},
+        datasets: [{
+            data: {{ category_values | tojson }}
+        }]
+    }
+});
+</script>
+
+<hr>
+
+<h3>Optimized Schedule</h3>
+
+{% for item in optimized %}
+<div class="optimized-card">
+    <b>{{ item.task.title }}</b><br>
+    Start: {{ item.start.strftime('%I:%M %p') }}<br>
+    End: {{ item.end.strftime('%I:%M %p') }}<br>
+
+    {% if item.conflict %}
+        <span class="text-danger">⚠ Deadline Conflict</span>
+    {% else %}
+        <span class="text-success">On Track</span>
+    {% endif %}
+</div>
+{% endfor %}
+
+<br>
+<a href="/weekly_report">Weekly Report</a> |
+<a href="/logout">Logout</a>
+
+{% endblock %}

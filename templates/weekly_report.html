@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Weekly Summary Report</h2>
+
+<div class="task-card">
+    <p>Total Tasks: {{ total_tasks }}</p>
+    <p>Completed Tasks: {{ completed_tasks }}</p>
+    <p>Pending Tasks: {{ pending_tasks }}</p>
+    <p>Total Time Scheduled: {{ total_time }} minutes</p>
+    <p>Completion Rate: {{ completion_rate }}%</p>
+</div>
+
+<a href="/dashboard">Back to Dashboard</a>
+
+{% endblock %}
