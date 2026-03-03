@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+<h1>User Dashboard</h1>
+
+<h2>Add Task</h2>
+
+<input type="text" id="taskName" placeholder="Task Name">
+<select id="priority">
+    <option value="1">High</option>
+    <option value="2">Medium</option>
+    <option value="3">Low</option>
+</select>
+
+<input type="number" id="duration" placeholder="Duration (minutes)">
+<input type="date" id="deadline">
+
+<select id="category">
+    <option>Work</option>
+    <option>Study</option>
+    <option>Health</option>
+    <option>Personal</option>
+</select>
+
+<button onclick="addTask()">Add Task</button>
+
+<h2>Today's Schedule</h2>
+<ul id="taskList"></ul>
+
+<h2>Productivity</h2>
+<p id="score"></p>
+
+
+<h2>Weekly Summary</h2>
+<p id="weeklyStats"></p>
+
+<canvas id="weeklyChart" width="300" height="200"></canvas>
+
+<script src="script.js"></script>
+</div>
+</body>
+</html>

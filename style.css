@@ -1,0 +1,103 @@
+/* ===== Background Styling ===== */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* ===== Main Container Card ===== */
+.container {
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* ===== Headings ===== */
+h1 {
+    color: #5a4fcf;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #444;
+    margin-top: 25px;
+}
+
+/* ===== Inputs & Select ===== */
+input, select {
+    width: 80%;
+    max-width: 300px;
+    padding: 10px;
+    margin: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 5px #667eea;
+}
+
+/* ===== Buttons ===== */
+button {
+    padding: 10px 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ===== Task List ===== */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #f9f9f9;
+    margin: 10px auto;
+    padding: 15px;
+    width: 85%;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+li:hover {
+    transform: translateY(-3px);
+    background: #eef1ff;
+}
+
+/* ===== Productivity Score ===== */
+#score {
+    font-size: 18px;
+    font-weight: bold;
+    color: #5a4fcf;
+    margin-top: 15px;
+}
+
+/* ===== Animation ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
